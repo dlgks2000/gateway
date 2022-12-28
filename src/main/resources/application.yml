@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: security
+          uri: http://localhost:8083
+          predicates:
+            - Path=/security/{segment}
+          filters:
+            - StripPrefix=1
